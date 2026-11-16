@@ -148,6 +148,9 @@
                     </div>
 
                     <form method="GET" action="{{ route('beranda') }}" class="flex items-center gap-2 print:hidden w-full sm:w-auto">
+                        <!-- MENGUNCI TAB KE BERANDA SAAT FILTER/RESET -->
+                        <input type="hidden" name="tab" value="beranda">
+                        
                         <select name="filter_tanggal" onchange="this.form.submit()" class="flex-1 sm:flex-none px-3 py-1.5 rounded-xl border border-stone-300 text-xs sm:text-sm bg-white font-medium text-slate-700">
                             <option value="">📅 Semua Waktu</option>
                             <option value="hari_ini" {{ request('filter_tanggal') == 'hari_ini' ? 'selected' : '' }}>Hari Ini</option>
@@ -155,7 +158,7 @@
                             <option value="bulan_ini" {{ request('filter_tanggal') == 'bulan_ini' ? 'selected' : '' }}>Bulan Ini</option>
                         </select>
                         @if(request('filter_tanggal'))
-                            <a href="{{ route('beranda') }}" class="px-3 py-1.5 bg-stone-100 hover:bg-stone-200 rounded-xl text-xs font-semibold text-slate-600 flex items-center transition">Reset</a>
+                            <a href="{{ route('beranda', ['tab' => 'beranda']) }}" class="px-3 py-1.5 bg-stone-100 hover:bg-stone-200 rounded-xl text-xs font-semibold text-slate-600 flex items-center transition">Reset</a>
                         @endif
                     </form>
                 </div>
@@ -192,7 +195,8 @@
                 </div>
 
                 <div class="mt-4 pt-3 border-t border-stone-100">
-                    {{ $riwayatPenjualan->links() }}
+                    <!-- APPEND TAB=BERANDA AGAR HALAMAN TIDAK KEMBALI KE TAB UTAMA SAAT PAGINATION DIKLIK -->
+                    {{ $riwayatPenjualan->appends(['tab' => 'beranda', 'filter_tanggal' => request('filter_tanggal')])->links() }}
                 </div>
             </div>
         </div>
@@ -405,7 +409,8 @@
                 </div>
 
                 <div class="mt-4 pt-3 border-t border-stone-100">
-                    {{ $produks->links() }}
+                    <!-- APPEND TAB=STOK AGAR HALAMAN TIDAK KEMBALI KE TAB UTAMA SAAT PAGINATION DIKLIK -->
+                    {{ $produks->appends(['tab' => 'stok', 'cari' => request('cari'), 'status' => request('status')])->links() }}
                 </div>
             </div>
         </div>
@@ -550,7 +555,6 @@
             const wadah = document.getElementById('wadah-baris-kasir');
             const semuaBarisSaatIni = wadah.querySelectorAll('.baris-kasir');
 
-            // Batasi maksimal 3 baris sekaligus agar card tetap proporsional tanpa scroll di layar PC
             if (semuaBarisSaatIni.length >= 3) {
                 alert('Maksimal 3 baris menu sekaligus agar tampilan tetap proporsional tanpa scroll. Silakan simpan terlebih dahulu.');
                 return;
@@ -674,7 +678,6 @@
             // Hentikan animasi sebelumnya agar tidak bertumpuk
             if (intervalJudul) clearInterval(intervalJudul);
 
-            // Tentukan teks dasar secara mutlak (tidak digabung string lama)
             let teksDasar = "Warung Mi Ayam Berkah — ";
             if (tabName === 'tab-beranda') {
                 teksDasar = " Beranda — Warung Mi Ayam Berkah — ";
@@ -686,7 +689,6 @@
                 teksDasar = " Asisten AI Owner — Warung Mi Ayam Berkah — ";
             }
 
-            // Jalankan animasi teks bergerak pada judul tab browser
             let i = 0;
             intervalJudul = setInterval(() => {
                 document.title = teksDasar.substring(i) + teksDasar.substring(0, i);
@@ -726,7 +728,7 @@
             document.getElementById('modal-edit').classList.add('hidden');
         }
 
-        // Penanganan Tab Otomatis Saat Halaman Dimuat
+        // Penanganan Tab Otomatis Saat Halaman Dimuat & Sinkronisasi Query Parameter 'tab'
         document.addEventListener("DOMContentLoaded", function() {
             const urlParams = new URLSearchParams(window.location.search);
             let targetTab = 'tab-beranda';
