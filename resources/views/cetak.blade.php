@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rekapan Penjualan - Warung Mi Ayam Berkah</title>
+    <title>Rekapan Penjualan - Warung Wontonmio</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍜</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -17,7 +17,7 @@
 
     <!-- KOP SURAT LAPORAN -->
     <div class="border-b-2 border-slate-800 pb-4 mb-6 text-center">
-        <h1 class="text-3xl font-bold uppercase tracking-wider text-slate-900">Warung Mi Ayam Berkah</h1>
+        <h1 class="text-3xl font-bold uppercase tracking-wider text-slate-900">Warung Wontonmio</h1>
         <p class="text-base font-bold text-amber-700 mt-1 uppercase tracking-wide">📄 Laporan Rekapan Penjualan</p>
         <p class="text-xs font-medium text-slate-500 mt-1">Periode Laporan: <span class="font-semibold text-slate-700">{{ $periode }}</span></p>
     </div>
@@ -83,7 +83,7 @@
     <!-- BAGIAN TANDA TANGAN & WAKTU CETAK -->
     <div class="flex justify-between items-end text-xs text-slate-500 mt-10 pt-4 border-t border-stone-200">
         <div>
-            <p>Dokumen ini dicetak otomatis dari Sistem Kelola Usaha <strong>Warung Mi Ayam Berkah</strong>.</p>
+            <p>Dokumen ini dicetak otomatis dari Sistem Kelola Usaha <strong>Warung Wontonmio</strong>.</p>
             <p class="mt-0.5">Waktu Cetak: {{ now()->translatedFormat('d F Y, H:i') }} WIB</p>
         </div>
         <div class="text-center min-w-[160px]">

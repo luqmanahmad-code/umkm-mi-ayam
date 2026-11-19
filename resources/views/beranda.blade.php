@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Beranda - Warung Mi Ayam Berkah</title>
+    <title id="page-title">Beranda - Warung Wontonmio</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍜</text></svg>">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -26,7 +26,7 @@
             <div class="flex items-center gap-3">
                 <span class="text-2xl bg-amber-100 p-2 rounded-xl">🍜</span>
                 <div>
-                    <h1 class="text-sm sm:text-base font-bold text-slate-800 leading-tight">Warung Mi Ayam Berkah</h1>
+                    <h1 class="text-sm sm:text-base font-bold text-slate-800 leading-tight">Warung Wontonmio</h1>
                     <p class="text-xs text-slate-500">Owner: {{ auth()->user()->name }}</p>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                     </button>
                 </div>
 
-                <form action="{{ route('logout') }}" method="POST" class="inline" onsubmit="return confirm('⚠️ Apakah Anda yakin ingin keluar dari sistem Warung Mi Ayam Berkah?')">
+                <form action="{{ route('logout') }}" method="POST" class="inline" onsubmit="return confirm('⚠️ Apakah Anda yakin ingin keluar dari sistem Warung Wontonmio?')">
                     @csrf
                     <button type="submit" class="border border-rose-200 text-rose-600 hover:bg-rose-50 px-3.5 py-2 rounded-xl text-xs font-semibold transition">
                         Keluar
@@ -678,15 +678,15 @@
             // Hentikan animasi sebelumnya agar tidak bertumpuk
             if (intervalJudul) clearInterval(intervalJudul);
 
-            let teksDasar = "Warung Mi Ayam Berkah — ";
+            let teksDasar = "Warung Wontonmio — ";
             if (tabName === 'tab-beranda') {
-                teksDasar = " Beranda — Warung Mi Ayam Berkah — ";
+                teksDasar = " Beranda — Warung Wontonmio — ";
             } else if (tabName === 'tab-kasir') {
-                teksDasar = " Kasir & Menu Baru — Warung Mi Ayam Berkah — ";
+                teksDasar = " Kasir & Menu Baru — Warung Wontonmio — ";
             } else if (tabName === 'tab-stok') {
-                teksDasar = " Kelola Stok Barang — Warung Mi Ayam Berkah — ";
+                teksDasar = " Kelola Stok Barang — Warung Wontonmio — ";
             } else if (tabName === 'tab-ai') {
-                teksDasar = " Asisten AI Owner — Warung Mi Ayam Berkah — ";
+                teksDasar = " Asisten AI Owner — Warung Wontonmio — ";
             }
 
             let i = 0;
