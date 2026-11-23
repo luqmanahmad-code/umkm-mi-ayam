@@ -5,9 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Produk extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'kategori_id',
         'kode_menu',
@@ -33,7 +36,7 @@ class Produk extends Model
         if ($this->stok_tersedia <= 0) {
             return 'Habis';
         }
-        if ($this->stok_tersedia <=$this->batas_minimum_stok) {
+        if ($this->stok_tersedia <= $this->batas_minimum_stok) {
             return 'Menipis';
         }
         return 'Tersedia';
